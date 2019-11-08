@@ -1,0 +1,1 @@
+add_executable(Model Object.h Object.cpp)
