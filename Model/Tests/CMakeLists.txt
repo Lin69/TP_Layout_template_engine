@@ -1,0 +1,1 @@
+add_executable(Test test.cpp Object_test.cpp ../Object.cpp List_test.cpp Form_related_test.cpp Container_test.cpp)

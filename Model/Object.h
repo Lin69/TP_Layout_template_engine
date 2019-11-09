@@ -6,20 +6,21 @@
 #include <vector>
 #include <boost/variant.hpp>
 
+class Div;
 class Form;
 
 class Object {
 public:
     virtual std::string make_html_string() = 0;
 
-    virtual void set_tag_content(std::string content);
-    virtual void set_id(std::string __id);
-    virtual void set_class(std::string __class);
-    virtual void set_hidden(bool _hidden);
-    virtual void set_title(std::string _title);
-    virtual void set_dir(bool __dir);
-    virtual void set_access_key(char _access_key);
-    virtual void set_contenteditable(bool _value);
+    void set_tag_content(const std::string& content);
+    void set_id(const std::string& __id);
+    void set_class(const std::string& __class);
+    void set_hidden(const bool& _hidden);
+    void set_title(const std::string& _title);
+    void set_dir(const bool& __dir);
+    void set_access_key(const char& _access_key);
+    void set_contenteditable(const bool& _value);
 
 protected:
     std::string tag_content;
@@ -37,11 +38,17 @@ protected:
 
 class A_link : public Object {
 public:
+    A_link();
+    A_link(const A_link& src);
+    A_link(A_link&& src) noexcept;
+    A_link& operator=(const A_link& src);
+    ~A_link();
+
     std::string make_html_string() override;
 
-    void set_href(std::string _href);
-    void set_name(std::string __name);
-    void set_download(std::string _download);
+    void set_href(const std::string& _href);
+    void set_name(const std::string& __name);
+    void set_download(const bool& _download);
 
 private:
     std::string href;
@@ -51,11 +58,17 @@ private:
 
 class Img : public Object {
 public:
+    Img();
+    Img(const Img& src);
+    Img(Img&& src) noexcept;
+    Img& operator=(const Img& src);
+    ~Img();
+
     std::string make_html_string() override;
 
-    void set_src(std::string __src);
-    void set_width(int __width);
-    void set_height(int __height);
+    void set_src(const std::string& __src);
+    void set_width(const int& __width);
+    void set_height(const int& __height);
 
 private:
     int _width;
@@ -65,9 +78,9 @@ private:
 
 class List : public Object {
 public:
-    void set_list(std::vector<std::string>);
-    void list_append(std::string);
-    void list_remove(int id);
+    void set_list(const std::vector<std::string>& __list);
+    void list_append(const std::string& item);
+    void list_remove(const int& id);
 
 protected:
     std::vector<std::string> _list;
@@ -75,20 +88,38 @@ protected:
 
 class Ol : public List {
 public:
+    Ol();
+    Ol(const Ol& src);
+    Ol(Ol&& src) noexcept;
+    Ol& operator=(const Ol& src);
+    ~Ol();
+
     std::string make_html_string() override;
 };
 
 class Ul : public List {
 public:
+    Ul();
+    Ul(const Ul& src);
+    Ul(Ul&& src) noexcept;
+    Ul& operator=(const Ul& src);
+    ~Ul();
+
     std::string make_html_string() override;
 };
 
 class Select : public List {
 public:
+    Select();
+    Select(const Select& src);
+    Select(Select&& src) noexcept;
+    Select& operator=(const Select& src);
+    ~Select();
+
     std::string make_html_string() override;
-    void set_multiple(int __multiple);
-    void set_size(int size);
-    void set_required(bool value);
+    void set_multiple(const int& __multiple);
+    void set_size(const int& size);
+    void set_required(const bool& value);
 
 private:
     int _multiple;
@@ -98,31 +129,50 @@ private:
 
 class Button : public Object {
 public:
+    Button();
+    Button(const Button& src);
+    Button(Button&& src) noexcept;
+    Button& operator=(const Button& src);
+    ~Button();
+
     std::string make_html_string() override;
 };
 
 class Input : public Object {
 public:
+    Input();
+    Input(const Input& src);
+    Input(Input&& src) noexcept;
+    Input& operator=(const Input& src);
+    ~Input();
+
     std::string make_html_string() override;
 
-    void set_type(int __value);
-    void set_value(std::string __value);
+    void set_type(const int& __value);
+    void set_value(const std::string& __value);
+
 private:
-    enum _type {button, checkbox, _file, hidden, image, password, radio, _reset, submit, _text} _type;
+    enum _type {button, checkbox, _file, hidden, image, password, radio, _reset, submit, _text} __type;
     std::string _value;
 };
 
 class Textarea : public Object {
 public:
+    Textarea();
+    Textarea(const Textarea& src);
+    Textarea(Textarea&& src) noexcept;
+    Textarea& operator=(const Textarea& src);
+    ~Textarea();
+
     std::string make_html_string() override;
 
-    void set_cols(int _cols);
-    void set_rows(int _rows);
-    void set_maxlength(int _maxlength);
-    void set_placeholder(std::string _placeholder);
-    void set_readonly(bool value);
-    void set_required(bool value);
-    void set_wrap(bool value);
+    void set_cols(const int& _cols);
+    void set_rows(const int& _rows);
+    void set_maxlength(const int& _maxlength);
+    void set_placeholder(const std::string& _placeholder);
+    void set_readonly(const bool& value);
+    void set_required(const bool& value);
+    void set_wrap(const bool& value); // TODO: небулевое значение
 
 private:
     int cols;
@@ -137,31 +187,46 @@ private:
 class Container : public Object {
 public:
     template<typename T>
-    void add_object(T object);
+    void add_object(const T& object);
 
-    void remove_object(int id);
+    void remove_object(const int& id);
+
+protected:
+    std::vector<boost::variant<Form, Div, List, Img, A_link, Input, Textarea, Button>> _objects;
 };
+
+template<typename T>
+void Container::add_object(const T &object) {
+
+}
 
 class Form : public Container {
 public:
+    Form();
+    Form(const Form& src);
+    Form(Form&& src) noexcept;
+    Form& operator=(const Form& src);
+    ~Form();
+
     std::string make_html_string() override;
 
-    void set_action(std::string __action);
-    void set_http_method(bool value);
+    void set_action(const std::string& __action);
+    void set_http_method(const bool& value);
 
 private:
-    std::vector<boost::variant<List, Img, A_link, Input, Textarea, Button>> _objects;
-
     std::string _action;
     bool http_method;
 };
 
 class Div : public Container {
 public:
-    std::string make_html_string() override;
+    Div();
+    Div(const Div& src);
+    Div(Div&& src) noexcept;
+    Div& operator=(const Div& src);
+    ~Div();
 
-private:
-    std::vector<boost::variant<Form, List, Img, A_link, Input, Textarea, Button>> _objects;
+    std::string make_html_string() override;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_OBJECT_H
