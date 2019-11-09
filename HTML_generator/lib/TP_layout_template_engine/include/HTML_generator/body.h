@@ -10,16 +10,19 @@
 using std::string;
 using std::vector;
 
+typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button> VarType;
+
 class Body {
  private:
   int elements_count;
-  vector<boost::variant<int, string>> content;
+  vector<VarType> content;
 
  public:
-  void add_content(string, boost::variant<int, string>);
-  boost::variant<int, string> get_object(string);
+  Body(int);
+  void add_content(string, VarType);
+  VarType get_object(string);
   void delete_object(string);
-  vector<string> get_all();
+  string get_all();
 };
 
 #endif  // TP_LAYOUT_TEMPLATE_ENGINE_BODY_H

@@ -17,7 +17,6 @@ using std::string;
 
 class Pager {
  private:
-  string file_name;
   Templater css_template;
   Head head;
   Body body;
@@ -26,12 +25,10 @@ class Pager {
   Pager(string, int, int);
   void alter_head(map<string, string>);
 
-  void add_to_body(boost::variant<int, string>);
-  string get_name();
-  void change_name(string);
+  void add_to_body(string, VarType);
   void remove_from_body(string);
-  boost::variant<int, string> get_element(string);
-  string render();
+  VarType get_element(string);
+  void render();
 };
 
 #endif  // TP_LAYOUT_TEMPLATE_ENGINE_PAGER_H
