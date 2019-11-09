@@ -7,4 +7,4 @@ VarType Body::get_object(string id) {
 };
 void Body::delete_object(string id){};
 string Body::get_all() { return ""; };
-Body::Body(int num_of_cols);
+Body::Body(int num_of_cols){};

@@ -10,7 +10,9 @@
 using std::string;
 using std::vector;
 
-typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button> VarType;
+// typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button>
+// VarType;
+typedef int VarType;
 
 class Body {
  private:

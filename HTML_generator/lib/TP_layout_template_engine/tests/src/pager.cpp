@@ -1,7 +1,8 @@
 #include "HTML_generator/pager.h"
 #include "gtest/gtest.h"
-typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button> VarType;
-
+// typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button>
+// VarType;
+typedef int VarType;
 TEST(init_er) {
   EXPECT_THROW(pager = Pager("file", 4, 1), std::invalid_argument);
 }
