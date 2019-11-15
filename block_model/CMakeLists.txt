@@ -1,6 +1,6 @@
 project(TP_Layout_template_engine)
 
-file(GLOB ${PROJECT_NAME}_SOURCE_FILES "./*.cpp")
+file(GLOB ${PROJECT_NAME}_SOURCE_FILES "src/*.cpp")
 
 add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCE_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -9,6 +9,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF
         COMPILE_FLAGS "-Wall -Wextra -Werror -Wpedantic")
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
-add_subdirectory(Tests)
+add_subdirectory(lib)

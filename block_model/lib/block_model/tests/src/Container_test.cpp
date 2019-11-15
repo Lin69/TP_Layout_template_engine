@@ -1,4 +1,4 @@
-#include "../Object.h"
+#include "Object.h"
 #include "gtest/gtest.h"
 
 TEST(Form, init) {

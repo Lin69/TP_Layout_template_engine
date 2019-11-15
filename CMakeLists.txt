@@ -4,4 +4,5 @@ project(TP_Layout_template_engine)
 enable_testing()
 
 add_subdirectory(external)
-add_subdirectory(Model)
+
+add_subdirectory(block_model)

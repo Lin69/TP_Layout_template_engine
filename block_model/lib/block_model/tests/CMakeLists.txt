@@ -1,10 +1,10 @@
-set(NAME_OF_THE_TESTED_PROJECT TP_layout_template_engine)
+set(NAME_OF_THE_TESTED_PROJECT block_model_block_model)
 
 include(GoogleTest)
 
 set(PROJECT_NAME ${NAME_OF_THE_TESTED_PROJECT}_tests)
 
-file(GLOB ${PROJECT_NAME}_SOURCE_FILES "./*.cpp")
+file(GLOB ${PROJECT_NAME}_SOURCE_FILES "src/*.cpp")
 
 add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCE_FILES})
 
@@ -15,6 +15,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
         CXX_EXTENSIONS OFF)
 #        COMPILE_FLAGS "-Wall -Wextra -Werror -Wpedantic")
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_link_libraries(${PROJECT_NAME} ${NAME_OF_THE_TESTED_PROJECT} gtest)
+target_link_libraries(${PROJECT_NAME} ${NAME_OF_THE_TESTED_PROJECT}_lib gtest)
 
 gtest_discover_tests(${PROJECT_NAME})
