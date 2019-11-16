@@ -21,7 +21,7 @@ Img::~Img() {
 }
 
 std::string Img::make_html_string() {
-
+    return "";
 }
 
 void Img::set_src(const std::string &new_src) {

@@ -21,7 +21,7 @@ A_link::~A_link() {
 }
 
 std::string A_link::make_html_string() {
-
+    return "";
 }
 
 void A_link::set_href(const std::string &new_href) {

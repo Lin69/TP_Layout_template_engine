@@ -21,5 +21,5 @@ Button::~Button() {
 }
 
 std::string Button::make_html_string() {
-
+    return "";
 }

@@ -21,7 +21,7 @@ Input::~Input() {
 }
 
 std::string Input::make_html_string() {
-
+    return "";
 }
 
 void Input::set_type(const _type& type) {

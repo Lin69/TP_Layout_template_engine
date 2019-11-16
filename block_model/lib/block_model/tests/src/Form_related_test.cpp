@@ -19,7 +19,7 @@ TEST(Input, set_attributes) {
     Input input{};
 
     _type test_type = image;
-
+    
     input.set_type(test_type);
     input.set_value("string");
 

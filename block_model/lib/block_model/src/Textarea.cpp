@@ -21,7 +21,7 @@ Textarea::~Textarea() {
 }
 
 std::string Textarea::make_html_string() {
-
+    return "";
 }
 
 void Textarea::set_cols(const int &new_cols) {

@@ -21,5 +21,5 @@ Ol::~Ol() {
 }
 
 std::string Ol::make_html_string() {
-
+    return "";
 }

@@ -1,4 +1,4 @@
-#include <Form.h>
+#include "Form.h"
 
 Form::Form() {
 
@@ -21,7 +21,7 @@ Form::~Form() {
 }
 
 std::string Form::make_html_string() {
-
+    return "";
 }
 
 void Form::set_action(const std::string &new_action) {

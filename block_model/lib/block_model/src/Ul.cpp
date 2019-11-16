@@ -21,5 +21,5 @@ Ul::~Ul() {
 }
 
 std::string Ul::make_html_string() {
-    return std::__cxx11::string();
+    return "";
 }

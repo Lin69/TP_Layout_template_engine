@@ -21,5 +21,5 @@ Div::~Div() {
 }
 
 std::string Div::make_html_string() {
-
+    return "";
 }

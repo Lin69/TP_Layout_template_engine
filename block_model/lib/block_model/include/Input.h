@@ -3,7 +3,7 @@
 
 #include "FormsRelated.h"
 
-enum _type {button, checkbox, file_attr, hidden_attr, image, password, radio, reset_attr, submit, text_attr}
+enum _type {button, checkbox, file_attr, hidden_attr, image, password, radio, reset_attr, submit, text_attr};
 
 class Input : public FormsRelated {
 public:

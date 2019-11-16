@@ -21,7 +21,7 @@ Select::~Select() {
 }
 
 std::string Select::make_html_string() {
-
+    return "";
 }
 
 void Select::set_multiple(const int &new_multiple) {
