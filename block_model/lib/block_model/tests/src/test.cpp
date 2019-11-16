@@ -1,5 +1,3 @@
-// TODO: Cmake, нормальная файловая структура, мб больше тестов, проверить атрибуты и теги (что-то добавить, удалить), методы, css, uml, boost
-
 #include "gtest/gtest.h"
 
 int main(int argc, char* argv[]) {

@@ -24,7 +24,7 @@ std::string Input::make_html_string() {
 
 }
 
-void Input::set_type(const int &new_value) {
+void Input::set_type(const _type& type) {
 
 }
 

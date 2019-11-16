@@ -1,5 +1,7 @@
-#include "Object.h"
+#include "Button.h"
 #include "gtest/gtest.h"
+#include "Textarea.h"
+#include "Input.h"
 
 TEST(Button, init) {
     Button button{};
@@ -16,7 +18,9 @@ TEST(Input, init) {
 TEST(Input, set_attributes) {
     Input input{};
 
-    input.set_type(4);
+    _type test_type = image;
+
+    input.set_type(test_type);
     input.set_value("string");
 
     std::string exp_input(R"(<input type="image" value="string")");
@@ -38,8 +42,7 @@ TEST(Textarea, set_attributes) {
     textarea.set_placeholder("text");
     textarea.set_readonly(true);
     textarea.set_required(true);
-    textarea.set_wrap(true);
 
-    std::string exp_textarea(R"(<textarea rows="20" cols="10" maxlength="50" placeholder="text" wrap="hard" readonly required></textarea>)");
+    std::string exp_textarea(R"(<textarea rows="20" cols="10" maxlength="50" placeholder="text" readonly required></textarea>)");
     EXPECT_EQ(textarea.make_html_string(), exp_textarea);
 }

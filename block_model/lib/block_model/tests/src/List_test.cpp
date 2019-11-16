@@ -1,4 +1,6 @@
-#include "Object.h"
+#include "Ol.h"
+#include "Ul.h"
+#include "Select.h"
 #include "gtest/gtest.h"
 
 TEST(Ol, init) {
