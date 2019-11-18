@@ -6,7 +6,7 @@
 
 class FormsRelated {
 public:
-    void set_form_ptr(std::shared_ptr<Form> new_form_ptr);
+    void SetFormPtr(std::shared_ptr<Form> new_form_ptr);
 protected:
     std::shared_ptr<Form> form_ptr;
 };

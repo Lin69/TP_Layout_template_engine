@@ -11,11 +11,11 @@ public:
     Img& operator=(const Img& src);
     ~Img();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 
-    void set_src(const std::string& new_src);
-    void set_width(const int& new_width);
-    void set_height(const int& new_height);
+    void SetSrc(const std::string& new_src);
+    void SetWidth(const int& new_width);
+    void SetHeight(const int& new_height);
 
 private:
     int width_attr;

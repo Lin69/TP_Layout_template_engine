@@ -20,14 +20,14 @@ Form::~Form() {
 
 }
 
-std::string Form::make_html_string() {
+std::string Form::MakeHtmlString() {
     return "";
 }
 
-void Form::set_action(const std::string &new_action) {
+void Form::SetAction(const std::string &new_action) {
 
 }
 
-void Form::set_http_method(const bool &value) {
+void Form::SetHttpMethod(const bool &value) {
 
 }

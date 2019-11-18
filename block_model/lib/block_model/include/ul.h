@@ -11,7 +11,7 @@ public:
     Ul& operator=(const Ul& src);
     ~Ul();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_UL_H

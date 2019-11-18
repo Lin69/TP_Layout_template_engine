@@ -11,9 +11,9 @@ public:
     A& operator=(const A& src);
     ~A();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 
-    void set_href(const std::string& new_href);
+    void SetHref(const std::string& new_href);
 
 private:
     std::string href;

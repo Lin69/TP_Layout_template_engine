@@ -11,7 +11,7 @@ public:
     Div& operator=(const Div& src);
     ~Div();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_DIV_H

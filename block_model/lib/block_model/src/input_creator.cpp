@@ -1,6 +1,6 @@
 #include <input_creator.h>
 
-std::shared_ptr<Object> InputCreator::create_object() {
+std::shared_ptr<Object> InputCreator::CreateObject() {
 
 }
 

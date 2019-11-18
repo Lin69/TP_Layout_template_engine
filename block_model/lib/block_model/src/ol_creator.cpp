@@ -1,6 +1,6 @@
 #include <ol_creator.h>
 
-std::shared_ptr <Object> OlCreator::create_object() {
+std::shared_ptr <Object> OlCreator::CreateObject() {
 
 }
 

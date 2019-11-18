@@ -13,10 +13,10 @@ public:
     Input& operator=(const Input& src);
     ~Input();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 
-    void set_type(const _type& type);
-    void set_value(const std::string& new_value);
+    void SetType(const _type& type);
+    void SetValue(const std::string& new_value);
 
 private:
     _type type_attr;

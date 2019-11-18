@@ -11,14 +11,14 @@ public:
     Textarea& operator=(const Textarea& src);
     ~Textarea();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 
-    void set_cols(const int& new_cols);
-    void set_rows(const int& new_rows);
-    void set_maxlength(const int& new_maxlength);
-    void set_placeholder(const std::string& new_placeholder);
-    void set_readonly(const bool& value);
-    void set_required(const bool& value);
+    void SetCols(const int& new_cols);
+    void SetRows(const int& new_rows);
+    void SetMaxlength(const int& new_maxlength);
+    void SetPlaceholder(const std::string& new_placeholder);
+    void SetReadonly(const bool& value);
+    void SetRequired(const bool& value);
 
 private:
     int cols;

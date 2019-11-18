@@ -20,18 +20,18 @@ Select::~Select() {
 
 }
 
-std::string Select::make_html_string() {
+std::string Select::MakeHtmlString() {
     return "";
 }
 
-void Select::set_multiple(const int &new_multiple) {
+void Select::SetMultiple(const int &new_multiple) {
 
 }
 
-void Select::set_size(const int &new_size) {
+void Select::SetSize(const int &new_size) {
 
 }
 
-void Select::set_required(const bool &value) {
+void Select::SetRequired(const bool &value) {
 
 }

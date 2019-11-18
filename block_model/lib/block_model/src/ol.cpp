@@ -20,6 +20,6 @@ Ol::~Ol() {
 
 }
 
-std::string Ol::make_html_string() {
+std::string Ol::MakeHtmlString() {
     return "";
 }

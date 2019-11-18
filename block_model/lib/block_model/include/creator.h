@@ -5,7 +5,7 @@
 
 class Creator {
 public:
-    virtual std::shared_ptr<Object> create_object() = 0;
+    virtual std::shared_ptr<Object> CreateObject() = 0;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_CREATOR_H

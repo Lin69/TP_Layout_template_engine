@@ -20,14 +20,14 @@ Input::~Input() {
 
 }
 
-std::string Input::make_html_string() {
+std::string Input::MakeHtmlString() {
     return "";
 }
 
-void Input::set_type(const _type& type) {
+void Input::SetType(const _type& type) {
 
 }
 
-void Input::set_value(const std::string &new_value) {
+void Input::SetValue(const std::string &new_value) {
 
 }

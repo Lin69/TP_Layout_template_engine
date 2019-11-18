@@ -6,16 +6,16 @@
 class Container {
 public:
     template<typename T>
-    void add_object(const T& object);
+    void AddObject(const T& object);
 
-    void remove_object(const int& id);
+    void RemoveObject(const int& id);
 
 protected:
     std::vector<std::shared_ptr<Object>> objects_content;
 };
 
 template<typename T>
-void Container::add_object(const T& object) {
+void Container::AddObject(const T& object) {
 
 }
 

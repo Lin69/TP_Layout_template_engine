@@ -5,7 +5,7 @@
 
 class ImgCreator : public Creator {
 public:
-    virtual std::shared_ptr<Object> create_object() override;
+    virtual std::shared_ptr<Object> CreateObject() override;
     ~ImgCreator();
 };
 

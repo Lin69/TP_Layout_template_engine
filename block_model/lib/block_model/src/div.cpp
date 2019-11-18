@@ -20,6 +20,6 @@ Div::~Div() {
 
 }
 
-std::string Div::make_html_string() {
+std::string Div::MakeHtmlString() {
     return "";
 }

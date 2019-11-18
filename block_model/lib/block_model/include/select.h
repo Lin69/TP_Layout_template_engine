@@ -11,10 +11,10 @@ public:
     Select& operator=(const Select& src);
     ~Select();
 
-    std::string make_html_string() override;
-    void set_multiple(const int& new_multiple);
-    void set_size(const int& new_size);
-    void set_required(const bool& value);
+    std::string MakeHtmlString() override;
+    void SetMultiple(const int& new_multiple);
+    void SetSize(const int& new_size);
+    void SetRequired(const bool& value);
 
 private:
     int multiple_attr;

@@ -20,6 +20,6 @@ Button::~Button() {
 
 }
 
-std::string Button::make_html_string() {
+std::string Button::MakeHtmlString() {
     return "";
 }

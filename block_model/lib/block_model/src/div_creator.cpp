@@ -1,6 +1,6 @@
 #include <div_creator.h>
 
-std::shared_ptr<Object> DivCreator::create_object() {
+std::shared_ptr<Object> DivCreator::CreateObject() {
 
 }
 

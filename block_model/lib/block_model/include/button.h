@@ -11,7 +11,7 @@ public:
     Button& operator=(const Button& src);
     ~Button();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_BUTTON_H

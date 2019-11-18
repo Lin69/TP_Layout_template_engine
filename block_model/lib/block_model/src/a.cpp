@@ -20,10 +20,10 @@ A::~A() {
 
 }
 
-std::string A::make_html_string() {
+std::string A::MakeHtmlString() {
     return "";
 }
 
-void A::set_href(const std::string &new_href) {
+void A::SetHref(const std::string &new_href) {
 
 }

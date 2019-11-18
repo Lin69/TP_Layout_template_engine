@@ -6,7 +6,7 @@
 TEST(A, init) {
     A a{};
     std::string pure_link("<a href=\"\"></a>");
-    EXPECT_EQ(a.make_html_string(), pure_link);
+    EXPECT_EQ(a.MakeHtmlString(), pure_link);
 }
 
 TEST(A, set_link) {
@@ -14,11 +14,11 @@ TEST(A, set_link) {
     std::string href("path");
     std::string content("link");
 
-    a.set_href(href);
-    a.set_tag_content(content);
+    a.SetHref(href);
+    a.SetTagContent(content);
 
     std::string exp_link(R"(<a href="path">link</a>)");
-    EXPECT_EQ(a.make_html_string(), exp_link);
+    EXPECT_EQ(a.MakeHtmlString(), exp_link);
 }
 
 TEST(A, set_anchor) {
@@ -26,17 +26,17 @@ TEST(A, set_anchor) {
     std::string name("anchor");
     std::string content("link");
 
-    a.set_id(name);
-    a.set_tag_content(content);
+    a.SetId(name);
+    a.SetTagContent(content);
 
     std::string exp_link(R"(<a id="anchor">link</a>)");
-    EXPECT_EQ(a.make_html_string(), exp_link);
+    EXPECT_EQ(a.MakeHtmlString(), exp_link);
 }
 
 TEST(Img, init) {
     Img img{};
     std::string pure_img("<img src=\"\">");
-    EXPECT_EQ(img.make_html_string(), pure_img);
+    EXPECT_EQ(img.MakeHtmlString(), pure_img);
 }
 
 TEST(Img, set_attributes) {
@@ -45,23 +45,23 @@ TEST(Img, set_attributes) {
     int width = 50;
     int height = 100;
 
-    img.set_src(src);
-    img.set_width(width);
-    img.set_height(height);
+    img.SetSrc(src);
+    img.SetWidth(width);
+    img.SetHeight(height);
 
     std::string std_img(R"(<img src="path" width="50" height="100">)");
-    EXPECT_EQ(img.make_html_string(), std_img);
+    EXPECT_EQ(img.MakeHtmlString(), std_img);
 }
 
 TEST(Any_object, global_attributes) {
     Div div{};
 
-    div.set_class("class");
-    div.set_hidden(true);
-    div.set_id("name");
-    div.set_tag_content("content");
-    div.set_title("title");
+    div.SetClass("class");
+    div.SetHidden(true);
+    div.SetId("name");
+    div.SetTagContent("content");
+    div.SetTitle("title");
 
     std::string exp_div(R"(<div id="name" title="title" class="class" hidden="true">content</div>)");
-    EXPECT_EQ(div.make_html_string(), exp_div);
+    EXPECT_EQ(div.MakeHtmlString(), exp_div);
 }

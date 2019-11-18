@@ -6,7 +6,7 @@
 TEST(Ol, init) {
     Ol ol{};
     std::string pure_ol("<ol></ol>");
-    EXPECT_EQ(ol.make_html_string(), pure_ol);
+    EXPECT_EQ(ol.MakeHtmlString(), pure_ol);
 }
 
 TEST(Ol, set_list) {
@@ -14,26 +14,26 @@ TEST(Ol, set_list) {
 
     std::vector<std::string> list = {"test1", "test2", "test3"};
 
-    ol.set_list(list);
+    ol.SetList(list);
 
     std::string exp_ol("<ol>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n</ol>");
-    ASSERT_EQ(ol.make_html_string(), exp_ol);
+    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
 
-    ol.list_append("test4");
+    ol.ListAppend("test4");
 
     exp_ol = ("<ol>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n  <li>test4</li>\n</ol>");
-    ASSERT_EQ(ol.make_html_string(), exp_ol);
+    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
 
-    ol.list_remove(1);
+    ol.ListRemove(1);
 
     exp_ol = ("<ol>\n  <li>test1</li>\n  <li>test3</li>\n  <li>test4</li>\n</ol>");
-    ASSERT_EQ(ol.make_html_string(), exp_ol);
+    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
 }
 
 TEST(Ul, init) {
     Ul ul{};
     std::string pure_ul("<ul></ul>");
-    EXPECT_EQ(ul.make_html_string(), pure_ul);
+    EXPECT_EQ(ul.MakeHtmlString(), pure_ul);
 }
 
 TEST(Ul, set_list) {
@@ -41,26 +41,26 @@ TEST(Ul, set_list) {
 
     std::vector<std::string> list = {"test1", "test2", "test3"};
 
-    ul.set_list(list);
+    ul.SetList(list);
 
     std::string exp_ul("<ul>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n</ul>");
-    ASSERT_EQ(ul.make_html_string(), exp_ul);
+    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
 
-    ul.list_append("test4");
+    ul.ListAppend("test4");
 
     exp_ul = ("<ul>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n  <li>test4</li>\n</ul>");
-    ASSERT_EQ(ul.make_html_string(), exp_ul);
+    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
 
-    ul.list_remove(1);
+    ul.ListRemove(1);
 
     exp_ul = ("<ul>\n  <li>test1</li>\n  <li>test3</li>\n  <li>test4</li>\n</ul>");
-    ASSERT_EQ(ul.make_html_string(), exp_ul);
+    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
 }
 
 TEST(Select, init) {
     Select select{};
     std::string pure_select("<select></select");
-    EXPECT_EQ(select.make_html_string(), pure_select);
+    EXPECT_EQ(select.MakeHtmlString(), pure_select);
 }
 
 TEST(Select, set_list) {
@@ -68,31 +68,31 @@ TEST(Select, set_list) {
 
     std::vector<std::string> list = {"test1", "test2", "test3"};
 
-    select.set_list(list);
+    select.SetList(list);
 
     std::string exp_select("<select>\n  <option>test1</option>\n  <option>test2</option>\n  <option>test3</option>\n</select>");
-    ASSERT_EQ(select.make_html_string(), exp_select);
+    ASSERT_EQ(select.MakeHtmlString(), exp_select);
 
-    select.list_append("test4");
+    select.ListAppend("test4");
 
     exp_select = ("<select>\n  <option>test1</option>\n  <option>test2</option>\n  <option>test3</option>\n  <option>test4</option>\n</select>");
-    ASSERT_EQ(select.make_html_string(), exp_select);
+    ASSERT_EQ(select.MakeHtmlString(), exp_select);
 
-    select.list_remove(1);
+    select.ListRemove(1);
 
     exp_select = ("<select>\n  <option>test1</option>\n  <option>test3</option>\n  <option>test4</option>\n</select>");
-    ASSERT_EQ(select.make_html_string(), exp_select);
+    ASSERT_EQ(select.MakeHtmlString(), exp_select);
 }
 
 TEST(Select, set_attributes) {
     Select select{};
 
-    select.set_multiple(5);
-    select.set_size(10);
-    select.set_required(true);
-    select.list_append("test1");
+    select.SetMultiple(5);
+    select.SetSize(10);
+    select.SetRequired(true);
+    select.ListAppend("test1");
 
     std::string exp_select("<select size=\"10\" multiple = \"5\" required>\n  <option>test</option>\n</select>");
 
-    EXPECT_EQ(select.make_html_string(), exp_select);
+    EXPECT_EQ(select.MakeHtmlString(), exp_select);
 }

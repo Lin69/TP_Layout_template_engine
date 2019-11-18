@@ -5,9 +5,9 @@
 
 class List {
 public:
-    void set_list(const std::vector<std::string>& new_list);
-    void list_append(const std::string& item);
-    void list_remove(const int& id);
+    void SetList(const std::vector<std::string>& new_list);
+    void ListAppend(const std::string& item);
+    void ListRemove(const int& id);
 
 protected:
     std::vector<std::string> list_content;

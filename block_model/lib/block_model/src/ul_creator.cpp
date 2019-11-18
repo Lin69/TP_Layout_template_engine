@@ -1,6 +1,6 @@
 #include <ul_creator.h>
 
-std::shared_ptr <Object> UlCreator::create_object() {
+std::shared_ptr <Object> UlCreator::CreateObject() {
 
 }
 

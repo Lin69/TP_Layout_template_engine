@@ -11,7 +11,7 @@ public:
     Ol& operator=(const Ol& src);
     ~Ol();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 };
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_OL_H

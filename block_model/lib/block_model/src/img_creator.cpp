@@ -1,6 +1,6 @@
 #include <img_creator.h>
 
-std::shared_ptr <Object> ImgCreator::create_object() {
+std::shared_ptr <Object> ImgCreator::CreateObject() {
 
 }
 

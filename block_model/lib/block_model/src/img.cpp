@@ -20,18 +20,18 @@ Img::~Img() {
 
 }
 
-std::string Img::make_html_string() {
+std::string Img::MakeHtmlString() {
     return "";
 }
 
-void Img::set_src(const std::string &new_src) {
+void Img::SetSrc(const std::string &new_src) {
 
 }
 
-void Img::set_width(const int &new_width) {
+void Img::SetWidth(const int &new_width) {
 
 }
 
-void Img::set_height(const int &new_height) {
+void Img::SetHeight(const int &new_height) {
 
 }

@@ -20,6 +20,6 @@ Ul::~Ul() {
 
 }
 
-std::string Ul::make_html_string() {
+std::string Ul::MakeHtmlString() {
     return "";
 }

@@ -8,14 +8,14 @@
 // Обобщающий класс Object, содержащий глобальные атрибуты
 class Object {
 public:
-    virtual std::string make_html_string() = 0;
+    virtual std::string MakeHtmlString() = 0;
 
-    void set_tag_content(const std::string& new_content);
-    void set_id(const std::string& new_id);
-    void set_class(const std::string& new_class);
-    void set_class(const std::vector<std::string>& new_class);
-    void set_hidden(const bool& value);
-    void set_title(const std::string& new_title);
+    void SetTagContent(const std::string& new_content);
+    void SetId(const std::string& new_id);
+    void SetClass(const std::string& new_class);
+    void SetClass(const std::vector<std::string>& new_class);
+    void SetHidden(const bool& value);
+    void SetTitle(const std::string& new_title);
 
 protected:
     std::string tag_content;

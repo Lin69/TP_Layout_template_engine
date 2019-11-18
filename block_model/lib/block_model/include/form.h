@@ -11,10 +11,10 @@ public:
     Form& operator=(const Form& src);
     ~Form();
 
-    std::string make_html_string() override;
+    std::string MakeHtmlString() override;
 
-    void set_action(const std::string& new_action);
-    void set_http_method(const bool& value);
+    void SetAction(const std::string& new_action);
+    void SetHttpMethod(const bool& value);
 
 private:
     std::string action_attr;
