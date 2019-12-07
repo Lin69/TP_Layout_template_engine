@@ -1,30 +1,25 @@
-//
-// Created by Lina on 08/11/2019.
-//
-
 #ifndef TP_LAYOUT_TEMPLATE_ENGINE_BODY_H
 #define TP_LAYOUT_TEMPLATE_ENGINE_BODY_H
-#include <string>
+
+#include <functional>
 #include <vector>
-#include "boost/variant.hpp"
-using std::string;
-using std::vector;
+#include "HTML_generator/node.h"
 
-// typedef boost::variant<Div, List, Img, A_link, Input, Textarea, Button>
-// VarType;
-typedef int VarType;
-
+template <typename T>
 class Body {
- private:
-  int elements_count;
-  vector<VarType> content;
+  node<T> root;
+  bool empty;
 
  public:
-  Body(int);
-  void add_content(string, VarType);
-  VarType get_object(string);
-  void delete_object(string);
-  string get_all();
+  Body() : empty(true) {}
+  bool IsEmpty() { return empty; }
+
+  node<T>& get() { return root; }
+  const node<T>& get() const { return root; }
+  node<T>& set(const T& obj) {
+    this->root = node(obj);
+    return root;
+  }
 };
 
 #endif  // TP_LAYOUT_TEMPLATE_ENGINE_BODY_H
