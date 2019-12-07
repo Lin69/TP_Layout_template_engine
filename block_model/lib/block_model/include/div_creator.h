@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_DIV_CREATOR_H
 
 #include "creator.h"
+#include "div.h"
 
-class DivCreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~DivCreator();
-};
+namespace block_model {
+    class DivCreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~DivCreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_DIV_CREATOR_H

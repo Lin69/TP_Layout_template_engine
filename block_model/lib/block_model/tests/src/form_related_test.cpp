@@ -3,34 +3,37 @@
 #include "textarea.h"
 #include "input.h"
 
+using namespace block_model;
+
 TEST(Button, init) {
-    Button button{};
-    std::string pure_button("<button></button>");
-    EXPECT_EQ(button.MakeHtmlString(), pure_button);
+    Button button;
+    std::string pure_button("<button id=\"0\"></button>");
+    EXPECT_EQ(button.MakeHtmlString().str, pure_button);
 }
 
 TEST(Input, init) {
-    Input input{};
-    std::string pure_input("<input type=\"radio\">");
-    EXPECT_EQ(input.MakeHtmlString(), pure_input);
+    Input input;
+    std::string pure_input("<input type=\"submit\" id=\"1\">");
+    EXPECT_EQ(input.MakeHtmlString().str, pure_input);
 }
 
-TEST(Input, set_attributes) {
-    Input input{};
 
-    _type test_type = image;
+TEST(Input, set_attributes) {
+    Input input;
+
+    object_type test_type = image;
 
     input.SetType(test_type);
-    input.SetValue("string");
+    input.SetValue(block_model::string("string"));
 
-    std::string exp_input(R"(<input type="image" value="string")");
-    EXPECT_EQ(input.MakeHtmlString(), exp_input);
+    std::string exp_input(R"(<input type="image" value="string" id="2">)");
+    EXPECT_EQ(input.MakeHtmlString().str, exp_input);
 }
 
 TEST(Textarea, init) {
     Textarea textarea{};
-    std::string pure_textarea("<textarea></textarea>");
-    EXPECT_EQ(textarea.MakeHtmlString(), pure_textarea);
+    std::string pure_textarea("<textarea id=\"3\"></textarea>");
+    EXPECT_EQ(textarea.MakeHtmlString().str, pure_textarea);
 }
 
 TEST(Textarea, set_attributes) {
@@ -39,10 +42,11 @@ TEST(Textarea, set_attributes) {
     textarea.SetCols(10);
     textarea.SetRows(20);
     textarea.SetMaxlength(50);
-    textarea.SetPlaceholder("text");
+    textarea.SetPlaceholder(block_model::string("text"));
     textarea.SetReadonly(true);
     textarea.SetRequired(true);
 
-    std::string exp_textarea(R"(<textarea rows="20" cols="10" maxlength="50" placeholder="text" readonly required></textarea>)");
-    EXPECT_EQ(textarea.MakeHtmlString(), exp_textarea);
+    std::string exp_textarea(
+            R"(<textarea cols="10" rows="20" maxlength="50" placeholder="text" readonly required id="4"></textarea>)");
+    EXPECT_EQ(textarea.MakeHtmlString().str, exp_textarea);
 }

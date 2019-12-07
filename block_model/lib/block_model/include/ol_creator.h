@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_OL_CREATOR_H
 
 #include "creator.h"
+#include "ol.h"
 
-class OlCreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~OlCreator();
-};
+namespace block_model {
+    class OlCreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~OlCreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_OL_CREATOR_H

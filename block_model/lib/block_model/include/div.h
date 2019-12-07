@@ -3,15 +3,17 @@
 
 #include "container.h"
 
-class Div : virtual public Container, virtual public Object {
-public:
-    Div();
-    Div(const Div& src);
-    Div(Div&& src) noexcept;
-    Div& operator=(const Div& src);
-    ~Div();
+namespace block_model {
+    class Div : virtual public Container, virtual public Object {
+    public:
+        Div();
+        Div(const Div& src);
+        Div(Div&& src) noexcept;
+        Div& operator=(const Div& src);
+        ~Div() override;
 
-    std::string MakeHtmlString() override;
-};
+        [[nodiscard]] string MakeHtmlString() const override;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_DIV_H

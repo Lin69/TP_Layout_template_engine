@@ -3,20 +3,18 @@
 
 #include "object.h"
 
-class Container {
-public:
-    template<typename T>
-    void AddObject(const T& object);
+namespace block_model {
+    class Container {
+    public:
+        void AddObject(const std::shared_ptr<Object>& object);
 
-    void RemoveObject(const int& id);
+        void RemoveObject(const int& id);
 
-protected:
-    std::vector<std::shared_ptr<Object>> objects_content;
-};
+        virtual ~Container();
 
-template<typename T>
-void Container::AddObject(const T& object) {
-
+    protected:
+        std::vector<std::shared_ptr<Object>> objects_content;
+    };
 }
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_CONTAINER_H

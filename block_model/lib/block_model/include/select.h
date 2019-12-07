@@ -3,23 +3,28 @@
 
 #include "list.h"
 
-class Select : virtual public List, virtual public Object {
-public:
-    Select();
-    Select(const Select& src);
-    Select(Select&& src) noexcept;
-    Select& operator=(const Select& src);
-    ~Select();
+namespace block_model {
+    class Select : virtual public List, virtual public Object {
+    public:
+        Select();
+        Select(const Select& src);
+        Select(Select&& src) noexcept;
+        Select& operator=(const Select& src);
+        ~Select() override;
 
-    std::string MakeHtmlString() override;
-    void SetMultiple(const int& new_multiple);
-    void SetSize(const int& new_size);
-    void SetRequired(const bool& value);
+        [[nodiscard]] string MakeHtmlString() const override;
 
-private:
-    int multiple_attr;
-    bool required_attr;
-    int size_attr;
-};
+        void SetMultiple(const bool& value = true);
+        void SetSize(const int& new_size);
+        void SetRequired(const bool& value = true);
+
+        void SetTagContent(const string &new_content) override;
+
+    private:
+        bool multiple_attr;
+        bool required_attr;
+        int size_attr;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_SELECT_H

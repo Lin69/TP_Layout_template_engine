@@ -1,47 +1,62 @@
 #include "a.h"
+#include "a_creator.h"
 #include "div.h"
 #include "img.h"
 #include "gtest/gtest.h"
 
 TEST(A, init) {
-    A a{};
-    std::string pure_link("<a href=\"\"></a>");
-    EXPECT_EQ(a.MakeHtmlString(), pure_link);
+    block_model::A a;
+
+    std::string pure_link_a(R"(<a href="" id="12"></a>)");
+
+    EXPECT_EQ(a.MakeHtmlString().str, pure_link_a);
 }
 
 TEST(A, set_link) {
-    A a{};
-    std::string href("path");
-    std::string content("link");
+    block_model::A a;
+    block_model::string href("path");
+    block_model::string content("link");
 
     a.SetHref(href);
     a.SetTagContent(content);
 
-    std::string exp_link(R"(<a href="path">link</a>)");
-    EXPECT_EQ(a.MakeHtmlString(), exp_link);
+    std::string exp_link(R"(<a href="path" id="13">link</a>)");
+    EXPECT_EQ(a.MakeHtmlString().str, exp_link);
 }
 
-TEST(A, set_anchor) {
-    A a{};
-    std::string name("anchor");
-    std::string content("link");
+TEST(A, constructors) {
+    block_model::A a;
 
-    a.SetId(name);
-    a.SetTagContent(content);
+    std::string exp_a(R"(<a href="" id="14"></a>)");
+    EXPECT_EQ(a.MakeHtmlString().str, exp_a);
 
-    std::string exp_link(R"(<a id="anchor">link</a>)");
-    EXPECT_EQ(a.MakeHtmlString(), exp_link);
+    block_model::string href("path");
+    a.SetHref(href);
+    block_model::A copy_link = a;
+    std::string exp_copy(R"(<a href="path" id="15"></a>)");
+    EXPECT_EQ(copy_link.MakeHtmlString().str, exp_copy);
+
+    auto move_link = block_model::A(block_model::A());
+    std::string exp_move(R"(<a href="" id="16"></a>)");
+    EXPECT_EQ(move_link.MakeHtmlString().str, exp_move);
+
+    block_model::A assignment_link;
+    assignment_link = a;
+    std::string exp_assignment(R"(<a href="path" id="17"></a>)");
+    EXPECT_EQ(assignment_link.MakeHtmlString().str, exp_assignment);
 }
+
+
 
 TEST(Img, init) {
-    Img img{};
-    std::string pure_img("<img src=\"\">");
-    EXPECT_EQ(img.MakeHtmlString(), pure_img);
+    block_model::Img img;
+    std::string pure_img(R"(<img src="" id="18">)");
+    EXPECT_EQ(img.MakeHtmlString().str, pure_img);
 }
 
 TEST(Img, set_attributes) {
-    Img img{};
-    std::string src("path");
+    block_model::Img img;
+    block_model::string src("path");
     int width = 50;
     int height = 100;
 
@@ -49,19 +64,23 @@ TEST(Img, set_attributes) {
     img.SetWidth(width);
     img.SetHeight(height);
 
-    std::string std_img(R"(<img src="path" width="50" height="100">)");
-    EXPECT_EQ(img.MakeHtmlString(), std_img);
+    std::string std_img(R"(<img src="path" width="50" height="100" id="19">)");
+    EXPECT_EQ(img.MakeHtmlString().str, std_img);
+
+    src.str = "new_path";
+    img.SetSrc(src);
+    std::string new_img(R"(<img src="new_path" width="50" height="100" id="19">)");
+    EXPECT_EQ(img.MakeHtmlString().str, new_img);
 }
 
 TEST(Any_object, global_attributes) {
-    Div div{};
+    block_model::Div div;
 
-    div.SetClass("class");
+    div.SetClass(block_model::string("class"));
     div.SetHidden(true);
-    div.SetId("name");
-    div.SetTagContent("content");
-    div.SetTitle("title");
+    div.SetTagContent(block_model::string("content"));
+    div.SetTitle(block_model::string("title"));
 
-    std::string exp_div(R"(<div id="name" title="title" class="class" hidden="true">content</div>)");
-    EXPECT_EQ(div.MakeHtmlString(), exp_div);
+    std::string exp_div("<div id=\"20\" class=\"class\" hidden title=\"title\">content\n</div>");
+    EXPECT_EQ(div.MakeHtmlString().str, exp_div);
 }

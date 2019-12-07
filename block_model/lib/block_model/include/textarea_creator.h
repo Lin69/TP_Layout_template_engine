@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_TEXTAREA_CREATOR_H
 
 #include "creator.h"
+#include "textarea.h"
 
-class TextareaCreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~TextareaCreator();
-};
+namespace block_model {
+    class TextareaCreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~TextareaCreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_TEXTAREA_CREATOR_H

@@ -3,96 +3,102 @@
 #include "select.h"
 #include "gtest/gtest.h"
 
+using namespace block_model;
+
+
 TEST(Ol, init) {
-    Ol ol{};
-    std::string pure_ol("<ol></ol>");
-    EXPECT_EQ(ol.MakeHtmlString(), pure_ol);
+    Ol ol;
+    std::string pure_ol("<ol id=\"5\">\n</ol>");
+    EXPECT_EQ(ol.MakeHtmlString().str, pure_ol);
 }
 
 TEST(Ol, set_list) {
-    Ol ol{};
+    Ol ol;
 
-    std::vector<std::string> list = {"test1", "test2", "test3"};
+    std::vector<string> list = {block_model::string("test1"), block_model::string("test2"), block_model::string("test3")};
+    vector<string> list_wrap(list);
 
-    ol.SetList(list);
+    ol.SetList(list_wrap);
 
-    std::string exp_ol("<ol>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n</ol>");
-    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
+    std::string exp_ol("<ol id=\"6\">\n\t<li>test1</li>\n\t<li>test2</li>\n\t<li>test3</li>\n</ol>");
+    ASSERT_EQ(ol.MakeHtmlString().str, exp_ol);
 
-    ol.ListAppend("test4");
+    ol.ListAppend(block_model::string("test4"));
 
-    exp_ol = ("<ol>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n  <li>test4</li>\n</ol>");
-    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
+    exp_ol = ("<ol id=\"6\">\n\t<li>test1</li>\n\t<li>test2</li>\n\t<li>test3</li>\n\t<li>test4</li>\n</ol>");
+    ASSERT_EQ(ol.MakeHtmlString().str, exp_ol);
 
     ol.ListRemove(1);
 
-    exp_ol = ("<ol>\n  <li>test1</li>\n  <li>test3</li>\n  <li>test4</li>\n</ol>");
-    ASSERT_EQ(ol.MakeHtmlString(), exp_ol);
+    exp_ol = ("<ol id=\"6\">\n\t<li>test1</li>\n\t<li>test3</li>\n\t<li>test4</li>\n</ol>");
+    ASSERT_EQ(ol.MakeHtmlString().str, exp_ol);
 }
 
 TEST(Ul, init) {
-    Ul ul{};
-    std::string pure_ul("<ul></ul>");
-    EXPECT_EQ(ul.MakeHtmlString(), pure_ul);
+    Ul ul;
+    std::string pure_ul("<ul id=\"7\">\n</ul>");
+    EXPECT_EQ(ul.MakeHtmlString().str, pure_ul);
 }
 
 TEST(Ul, set_list) {
     Ul ul{};
 
-    std::vector<std::string> list = {"test1", "test2", "test3"};
+    std::vector<string> list = {block_model::string("test1"), block_model::string("test2"), block_model::string("test3")};
+    vector<string> list_wrap(list);
 
-    ul.SetList(list);
+    ul.SetList(list_wrap);
 
-    std::string exp_ul("<ul>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n</ul>");
-    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
+    std::string exp_ul("<ul id=\"8\">\n\t<li>test1</li>\n\t<li>test2</li>\n\t<li>test3</li>\n</ul>");
+    ASSERT_EQ(ul.MakeHtmlString().str, exp_ul);
 
-    ul.ListAppend("test4");
+    ul.ListAppend(block_model::string("test4"));
 
-    exp_ul = ("<ul>\n  <li>test1</li>\n  <li>test2</li>\n  <li>test3</li>\n  <li>test4</li>\n</ul>");
-    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
+    exp_ul = ("<ul id=\"8\">\n\t<li>test1</li>\n\t<li>test2</li>\n\t<li>test3</li>\n\t<li>test4</li>\n</ul>");
+    ASSERT_EQ(ul.MakeHtmlString().str, exp_ul);
 
     ul.ListRemove(1);
 
-    exp_ul = ("<ul>\n  <li>test1</li>\n  <li>test3</li>\n  <li>test4</li>\n</ul>");
-    ASSERT_EQ(ul.MakeHtmlString(), exp_ul);
+    exp_ul = ("<ul id=\"8\">\n\t<li>test1</li>\n\t<li>test3</li>\n\t<li>test4</li>\n</ul>");
+    ASSERT_EQ(ul.MakeHtmlString().str, exp_ul);
 }
 
 TEST(Select, init) {
-    Select select{};
-    std::string pure_select("<select></select");
-    EXPECT_EQ(select.MakeHtmlString(), pure_select);
+    Select select;
+    std::string pure_select("<select id=\"9\">\n</select>");
+    EXPECT_EQ(select.MakeHtmlString().str, pure_select);
 }
 
 TEST(Select, set_list) {
     Select select{};
 
-    std::vector<std::string> list = {"test1", "test2", "test3"};
+    std::vector<string> list = {block_model::string("test1"), block_model::string("test2"), block_model::string("test3")};
+    vector<string> list_wrap(list);
 
-    select.SetList(list);
+    select.SetList(list_wrap);
 
-    std::string exp_select("<select>\n  <option>test1</option>\n  <option>test2</option>\n  <option>test3</option>\n</select>");
-    ASSERT_EQ(select.MakeHtmlString(), exp_select);
+    std::string exp_select("<select id=\"10\">\n\t<option>test1</option>\n\t<option>test2</option>\n\t<option>test3</option>\n</select>");
+    ASSERT_EQ(select.MakeHtmlString().str, exp_select);
 
-    select.ListAppend("test4");
+    select.ListAppend(block_model::string("test4"));
 
-    exp_select = ("<select>\n  <option>test1</option>\n  <option>test2</option>\n  <option>test3</option>\n  <option>test4</option>\n</select>");
-    ASSERT_EQ(select.MakeHtmlString(), exp_select);
+    exp_select = ("<select id=\"10\">\n\t<option>test1</option>\n\t<option>test2</option>\n\t<option>test3</option>\n\t<option>test4</option>\n</select>");
+    ASSERT_EQ(select.MakeHtmlString().str, exp_select);
 
     select.ListRemove(1);
 
-    exp_select = ("<select>\n  <option>test1</option>\n  <option>test3</option>\n  <option>test4</option>\n</select>");
-    ASSERT_EQ(select.MakeHtmlString(), exp_select);
+    exp_select = ("<select id=\"10\">\n\t<option>test1</option>\n\t<option>test3</option>\n\t<option>test4</option>\n</select>");
+    ASSERT_EQ(select.MakeHtmlString().str, exp_select);
 }
 
 TEST(Select, set_attributes) {
     Select select{};
 
-    select.SetMultiple(5);
+    select.SetMultiple(true);
     select.SetSize(10);
     select.SetRequired(true);
-    select.ListAppend("test1");
+    select.ListAppend(block_model::string("test"));
 
-    std::string exp_select("<select size=\"10\" multiple = \"5\" required>\n  <option>test</option>\n</select>");
+    std::string exp_select("<select multiple required size=\"10\" id=\"11\">\n\t<option>test</option>\n</select>");
 
-    EXPECT_EQ(select.MakeHtmlString(), exp_select);
+    EXPECT_EQ(select.MakeHtmlString().str, exp_select);
 }

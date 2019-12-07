@@ -3,14 +3,18 @@
 
 #include "object.h"
 
-class List {
-public:
-    void SetList(const std::vector<std::string>& new_list);
-    void ListAppend(const std::string& item);
-    void ListRemove(const int& id);
+namespace block_model {
+    class List {
+    public:
+        void SetList(const vector<string>& new_list);
+        void ListAppend(const string& item);
+        void ListRemove(const int& id);
 
-protected:
-    std::vector<std::string> list_content;
-};
+        virtual ~List();
+
+    protected:
+        vector<string> list_content;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_LIST_H

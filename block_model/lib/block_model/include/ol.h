@@ -3,15 +3,19 @@
 
 #include "list.h"
 
-class Ol : virtual public List, virtual public Object {
-public:
-    Ol();
-    Ol(const Ol& src);
-    Ol(Ol&& src) noexcept;
-    Ol& operator=(const Ol& src);
-    ~Ol();
+namespace block_model {
+    class Ol : virtual public List, virtual public Object {
+    public:
+        Ol();
+        Ol(const Ol& src);
+        Ol(Ol&& src) noexcept;
+        Ol& operator=(const Ol& src);
+        ~Ol();
 
-    std::string MakeHtmlString() override;
-};
+        [[nodiscard]] string MakeHtmlString() const override;
+
+        void SetTagContent(const string &new_content) override;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_OL_H

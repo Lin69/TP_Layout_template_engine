@@ -1,37 +1,80 @@
 #include <img.h>
 
-Img::Img() {
+block_model::Img::Img() : width_attr(0), height_attr(0) {
 
 }
 
-Img::Img(const Img &src) {
+block_model::Img::Img(const block_model::Img& src) {
+    tag_content.str = src.tag_content.str;
+    class_attr.vec = src.class_attr.vec;
+    hidden = src.hidden;
+    title.str = src.title.str;
 
+    width_attr = src.width_attr;
+    height_attr = src.height_attr;
+    src_attr.str = src.src_attr.str;
 }
 
-Img::Img(Img &&src) noexcept {
+block_model::Img::Img(block_model::Img&& src) noexcept {
+    tag_content.str = std::move(src.tag_content.str);
+    class_attr.vec = std::move(src.class_attr.vec);
+    hidden = src.hidden;
+    title.str = std::move(src.title.str);
 
+    width_attr = src.width_attr;
+    height_attr = src.height_attr;
+    src_attr.str = std::move(src.src_attr.str);
+
+    id_attr = ----id_count;
 }
 
-Img &Img::operator=(const Img &src) {
+block_model::Img& block_model::Img::operator=(const block_model::Img& src) {
+    tag_content.str = src.tag_content.str;
+    class_attr.vec = src.class_attr.vec;
+    hidden = src.hidden;
+    title.str = src.title.str;
 
+    width_attr = src.width_attr;
+    height_attr = src.height_attr;
+    src_attr.str = src.src_attr.str;
+    return *this;
 }
 
-Img::~Img() {
+block_model::Img::~Img() = default;
 
+void block_model::Img::SetSrc(const string& new_src) {
+    src_attr.str = new_src.str;
 }
 
-std::string Img::MakeHtmlString() {
-    return "";
+void block_model::Img::SetWidth(const int& new_width) {
+    width_attr = new_width;
 }
 
-void Img::SetSrc(const std::string &new_src) {
-
+void block_model::Img::SetHeight(const int &new_height) {
+    height_attr = new_height;
 }
 
-void Img::SetWidth(const int &new_width) {
-
+void block_model::Img::SetTagContent(const block_model::string& new_content) {
+    // Не делает ничего
 }
 
-void Img::SetHeight(const int &new_height) {
+block_model::string block_model::Img::MakeHtmlString() const {
+    block_model::string result("<img src=\"");
 
+    result + src_attr;
+    result + block_model::string("\"");
+
+    if (width_attr) {
+        WrapAttribute(result, block_model::string("width"), width_attr);
+    }
+
+    if (height_attr) {
+        WrapAttribute(result, block_model::string("height"), height_attr);
+    }
+
+    CheckAttributes(result);
+
+    return result;
 }
+
+

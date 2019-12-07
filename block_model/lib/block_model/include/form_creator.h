@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_CONTAINERCREATOR_H
 
 #include "creator.h"
+#include "form.h"
 
-class FormCreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~FormCreator();
-};
+namespace block_model {
+    class FormCreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~FormCreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_CONTAINERCREATOR_H

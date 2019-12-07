@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_A_CREATOR_H
 
 #include "creator.h"
+#include "a.h"
 
-class ACreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~ACreator();
-};
+namespace block_model {
+    class ACreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~ACreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_A_CREATOR_H

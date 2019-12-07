@@ -2,11 +2,14 @@
 #define TP_LAYOUT_TEMPLATE_ENGINE_IMG_CREATOR_H
 
 #include "creator.h"
+#include "img.h"
 
-class ImgCreator : public Creator {
-public:
-    virtual std::shared_ptr<Object> CreateObject() override;
-    ~ImgCreator();
-};
+namespace block_model {
+    class ImgCreator : public Creator {
+    public:
+        std::shared_ptr<Object> Create() override;
+        ~ImgCreator() override = default;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_IMG_CREATOR_H

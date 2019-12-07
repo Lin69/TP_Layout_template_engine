@@ -3,20 +3,22 @@
 
 #include "object.h"
 
-class A : public Object {
-public:
-    A();
-    A(const A& src);
-    A(A&& src) noexcept;
-    A& operator=(const A& src);
-    ~A();
+namespace block_model {
+    class A : public Object {
+        public:
+            A();
+            A(const A& src);
+            A(A&& src) noexcept;
+            A& operator=(const A& src);
+            ~A() override;
 
-    std::string MakeHtmlString() override;
+            [[nodiscard]] string MakeHtmlString() const override;
 
-    void SetHref(const std::string& new_href);
+            void SetHref(const string& new_href);
 
-private:
-    std::string href;
-};
+        private:
+            string href;
+    };
+}
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_A_H
