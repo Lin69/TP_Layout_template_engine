@@ -38,32 +38,24 @@ void block_model::Form::SetTagContent(const block_model::String& new_content) {
 
 }
 
-block_model::String block_model::Form::MakeHtmlString() const {
-    block_model::String result("<form");
+block_model::Map block_model::Form::MakeHtmlString() const {
+    Map result;
+
+    result.set_tag(String("form"));
+    result.set_end();
+    CheckAttributes(result);
 
     if (http_method) {
-        result + block_model::String(" method=\"post\"");
+        result.insert(String("method"), String("post"));
     }
 
     if (!action_attr.is_empty()) {
-        WrapAttribute(result, block_model::String("action"), action_attr);
+        result.insert(String("action"), action_attr);
     }
-
-    CheckAttributes(result);
-    result + block_model::String("\n");
 
     for (const auto& it : objects_content) {
-        if (it) {
-            result + it->MakeHtmlString();
-            result + block_model::String("\n");
-        }
+        result.insert(String(object_template) + String(it->GetId()));
     }
 
-    result + block_model::String("</form>");
-
     return result;
-}
-
-int block_model::Form::GetId() const {
-    return id_attr;
 }

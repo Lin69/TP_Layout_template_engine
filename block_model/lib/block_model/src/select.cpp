@@ -45,32 +45,25 @@ void block_model::Select::SetTagContent(const block_model::String &new_content) 
 
 }
 
-block_model::String block_model::Select::MakeHtmlString() const {
-    block_model::String result("<select");
+block_model::Map block_model::Select::MakeHtmlString() const {
+    Map result;
 
-    if (multiple_attr) {
-        result + block_model::String(" multiple");
-    }
-
-    if (required_attr) {
-        result + block_model::String(" required");
-    }
-
-    if (size_attr) {
-        WrapAttribute(result, block_model::String("size"), size_attr);
-    }
-
+    result.set_tag(String("select"));
+    result.set_end();
     CheckAttributes(result);
 
-    result + block_model::String("\n");
+    result.insert(String("multiple"), String(""));
+    result.insert(String("required"), String(""));
 
-    for (const auto& it : list_content.vec) {
-        result + block_model::String("\t<option>");
-        result + it;
-        result + block_model::String("</option>\n");
+    if (size_attr) {
+        result.insert(String("size"), String(size_attr));
     }
 
-    result + block_model::String("</select>");
+    String list("\n");
+    for (const auto& it : list_content.vec) {
+        list + String("\t<option>") + it + String("</option>\n");
+    }
+    result.insert(list);
 
     return result;
 }

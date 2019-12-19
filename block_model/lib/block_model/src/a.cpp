@@ -28,17 +28,11 @@ void block_model::A::SetHref(const block_model::String& new_href) {
 block_model::Map block_model::A::MakeHtmlString() const {
     Map result;
 
-    result.insert(String("Tag"), String("a"));
-    result.insert()
-
-    block_model::String result("<a href=\"");
-
-    result + href;
-    result + block_model::String("\"");
-
+    result.set_tag(String("a"));
+    result.set_end();
     CheckAttributes(result);
 
-    result + block_model::String("</a>");
+    result.insert(String("href"), href);
 
     return result;
 }

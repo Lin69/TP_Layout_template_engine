@@ -5,6 +5,7 @@
 
 using namespace block_model;
 
+/*
 TEST(Button, init) {
     Button button;
     std::string pure_button("<button id=\"0\"></button>");
@@ -50,3 +51,4 @@ TEST(Textarea, set_attributes) {
             R"(<textarea cols="10" rows="20" maxlength="50" placeholder="text" readonly required id="4"></textarea>)");
     EXPECT_EQ(textarea.MakeHtmlString().str, exp_textarea);
 }
+*/

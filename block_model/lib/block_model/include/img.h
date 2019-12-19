@@ -12,7 +12,7 @@ namespace block_model {
         Img& operator=(const Img& src);
         ~Img() override;
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetSrc(const String& new_src);
         void SetWidth(const int& new_width);

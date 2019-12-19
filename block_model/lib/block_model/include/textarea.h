@@ -12,7 +12,7 @@ namespace block_model {
         Textarea& operator=(const Textarea& src);
         ~Textarea() override;
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetCols(const int& new_cols);
         void SetRows(const int& new_rows);

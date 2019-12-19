@@ -21,20 +21,16 @@ block_model::Div& block_model::Div::operator=(const block_model::Div& src) {
 
 block_model::Div::~Div() = default;
 
-block_model::String block_model::Div::MakeHtmlString() const {
-    block_model::String result("<div");
+block_model::Map block_model::Div::MakeHtmlString() const {
+    Map result;
 
+    result.set_tag(String("div"));
+    result.set_end();
     CheckAttributes(result);
-    result + block_model::String("\n");
 
     for (const auto& it : objects_content) {
-        if (it) {
-            result + it->MakeHtmlString();
-            result + block_model::String("\n");
-        }
+            result.insert(String(object_template) + String(it->GetId()));
     }
-
-    result + block_model::String("</div>");
 
     return result;
 }

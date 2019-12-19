@@ -6,7 +6,7 @@
 using namespace block_model;
 
 
-TEST(Ol, init) {
+/*TEST(Ol, init) {
     Ol ol;
     std::string pure_ol("<ol id=\"5\">\n</ol>");
     EXPECT_EQ(ol.MakeHtmlString().str, pure_ol);
@@ -101,4 +101,4 @@ TEST(Select, set_attributes) {
     std::string exp_select("<select multiple required size=\"10\" id=\"11\">\n\t<option>test</option>\n</select>");
 
     EXPECT_EQ(select.MakeHtmlString().str, exp_select);
-}
+}*/

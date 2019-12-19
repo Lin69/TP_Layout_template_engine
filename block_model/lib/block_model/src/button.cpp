@@ -22,16 +22,16 @@ block_model::Button& block_model::Button::operator=(const block_model::Button& s
 
 block_model::Button::~Button() = default;
 
-block_model::String block_model::Button::MakeHtmlString() const {
-    block_model::String result("<button");
+block_model::Map block_model::Button::MakeHtmlString() const {
+    Map result;
 
-    if (form_ptr) {
-        WrapAttribute(result, block_model::String("form"), form_ptr->GetId());
-    }
-
+    result.set_tag(String("button"));
+    result.set_end();
     CheckAttributes(result);
 
-    result + block_model::String("</button>");
+    if (form_ptr) {
+        result.insert(String("form"), String(form_ptr->GetId()));
+    }
 
     return result;
 }

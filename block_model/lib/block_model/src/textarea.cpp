@@ -55,42 +55,40 @@ void block_model::Textarea::SetRequired(const bool& value) {
     required_attr = value;
 }
 
-block_model::String block_model::Textarea::MakeHtmlString() const {
-    block_model::String result("<textarea");
+block_model::Map block_model::Textarea::MakeHtmlString() const {
+    Map result;
+
+    result.set_tag(String("textarea"));
+    result.set_end();
+    CheckAttributes(result);
 
     if (cols) {
-        WrapAttribute(result, block_model::String("cols"), cols);
+        result.insert(String("cols"), String(cols));
     }
 
     if (rows) {
-        WrapAttribute(result, block_model::String("rows"), rows);
+        result.insert(String("rows"), String(rows));
     }
 
     if (maxlength) {
-        if (cols) {
-            WrapAttribute(result, block_model::String("maxlength"), maxlength);
-        }
+        result.insert(String("maxlength"), String(maxlength));
     }
 
     if (!placeholder.is_empty()) {
-        WrapAttribute(result, block_model::String("placeholder"), placeholder);
+        result.insert(String("placeholder"), placeholder);
     }
 
     if (readonly) {
-        result + block_model::String(" readonly");
+        result.insert(String("readonly"), String(""));
     }
 
     if (required_attr) {
-        result + block_model::String(" required");
+        result.insert(String("required"), String(""));
     }
 
     if (form_ptr) {
-        WrapAttribute(result, block_model::String("form"), form_ptr->GetId());
+        result.insert(String("form"), String(form_ptr->GetId()));
     }
-
-    CheckAttributes(result);
-
-    result + block_model::String("</textarea>");
 
     return result;
 }

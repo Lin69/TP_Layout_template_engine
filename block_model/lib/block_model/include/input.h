@@ -4,7 +4,7 @@
 #include "forms_related.h"
 
 namespace block_model {
-    enum object_type {button, checkbox, file_attr, hidden_attr, image, password, radio, reset_attr, submit, text_attr};
+    enum object_type {button = 0, checkbox, file_attr, hidden_attr, image, password, radio, reset_attr, submit, text_attr};
 
     class Input : virtual public FormsRelated, virtual public Object {
     public:
@@ -14,12 +14,15 @@ namespace block_model {
         Input& operator=(const Input& src);
         ~Input() override;
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetType(const object_type& type);
         void SetValue(const String& new_value);
 
     private:
+        std::array<String, 10> type_array = {String("button"), String("checkbox"), String("file"),
+                                             String("hidden"), String("image"), String("password"),
+                                             String("radio"), String("reset"), String("submit"), String("text")};
         object_type type_attr;
         String value_attr;
     };

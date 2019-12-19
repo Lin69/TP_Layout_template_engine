@@ -12,7 +12,7 @@ namespace block_model {
         Div& operator=(const Div& src);
         ~Div() override;
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
     };
 }
 

@@ -12,7 +12,7 @@ namespace block_model {
         Select& operator=(const Select& src);
         ~Select() override;
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetMultiple(const bool& value = true);
         void SetSize(const int& new_size);

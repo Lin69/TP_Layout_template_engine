@@ -12,7 +12,7 @@ namespace block_model {
         Ol& operator=(const Ol& src);
         ~Ol();
 
-        [[nodiscard]] String MakeHtmlString() const override;
+        [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetTagContent(const String &new_content) override;
     };

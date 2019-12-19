@@ -41,21 +41,22 @@ void block_model::Img::SetTagContent(const block_model::String& new_content) {
     // Не делает ничего
 }
 
-block_model::String block_model::Img::MakeHtmlString() const {
-    block_model::String result("<img src=\"");
+block_model::Map block_model::Img::MakeHtmlString() const {
+    Map result;
 
-    result + src_attr;
-    result + block_model::String("\"");
+    result.set_tag(String("img"));
+    result.set_end(false);
+    CheckAttributes(result);
+
+    result.insert(String("src"), src_attr);
 
     if (width_attr) {
-        WrapAttribute(result, block_model::String("width"), width_attr);
+        result.insert(String("width"), String(width_attr));
     }
 
     if (height_attr) {
-        WrapAttribute(result, block_model::String("height"), height_attr);
+        result.insert(String("height"), String(height_attr));
     }
-
-    CheckAttributes(result);
 
     return result;
 }

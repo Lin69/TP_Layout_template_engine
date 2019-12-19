@@ -5,16 +5,34 @@
 #include "gtest/gtest.h"
 
 #include <vector>
+#include <array>
+
+using namespace block_model;
 
 TEST(A, init) {
-    block_model::A a;
+    A a;
 
-    std::string pure_link_a(R"(<a href="" id="12"></a>)");
+    auto a_map = a.MakeHtmlString();
 
-    EXPECT_EQ(a.MakeHtmlString().str, pure_link_a);
+    Map a_map_exp;
+    a_map_exp.insert(String("id"), String(0));
+    a_map_exp.insert(String("href"), String(""));
+    a_map_exp.set_tag(String("a"));
+    a_map_exp.set_end();
+    a_map_exp.insert(String(""));
+
+    for (const auto& it : a_map.map) {
+        EXPECT_EQ(it.first, a_map_exp.map.find(it.first)->first);
+        EXPECT_EQ(it.second, a_map_exp.map.find(it.first)->second);
+    }
+
+    EXPECT_EQ(a_map.tag.str, "a");
+    EXPECT_EQ(a_map.end_tag, true);
+
+    EXPECT_EQ(a_map.content[0].str, "");
 }
 
-TEST(A, set_link) {
+/*TEST(A, set_link) {
     block_model::A a;
     block_model::String href("path");
     block_model::String content("link");
@@ -86,4 +104,4 @@ TEST(Any_object, global_attributes) {
 
     std::string exp_div("<div id=\"20\" class=\"class\" hidden title=\"title\">content\n</div>");
     EXPECT_EQ(div.MakeHtmlString().str, exp_div);
-}
+}*/

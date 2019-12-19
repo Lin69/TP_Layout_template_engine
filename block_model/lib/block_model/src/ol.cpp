@@ -25,20 +25,18 @@ void block_model::Ol::SetTagContent(const block_model::String &new_content) {
 
 }
 
-block_model::String block_model::Ol::MakeHtmlString() const {
-    block_model::String result("<ol");
+block_model::Map block_model::Ol::MakeHtmlString() const {
+    Map result;
 
+    result.set_tag(String("ol"));
+    result.set_end();
     CheckAttributes(result);
 
-    result + block_model::String("\n");
-
+    String list("\n");
     for (const auto& it : list_content.vec) {
-        result + block_model::String("\t<li>");
-        result + it;
-        result + block_model::String("</li>\n");
+        list + String("\t<li>") + it + String("</ol>\n");
     }
-
-    result + block_model::String("</ol>");
+    result.insert(list);
 
     return result;
 }

@@ -25,20 +25,18 @@ void block_model::Ul::SetTagContent(const block_model::String& new_content) {
 
 }
 
-block_model::String block_model::Ul::MakeHtmlString() const {
-    block_model::String result("<ul");
+block_model::Map block_model::Ul::MakeHtmlString() const {
+    Map result;
 
+    result.set_tag(String("ul"));
+    result.set_end();
     CheckAttributes(result);
 
-    result + block_model::String("\n");
-
+    String list("\n");
     for (const auto& it : list_content.vec) {
-        result + block_model::String("\t<li>");
-        result + it;
-        result + block_model::String("</li>\n");
+        list + String("\t<li>") + it + String("</li>\n");
     }
-
-    result + block_model::String("</ul>");
+    result.insert(list);
 
     return result;
 }

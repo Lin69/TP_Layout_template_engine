@@ -5,20 +5,32 @@
 #include <vector>
 #include <memory>
 #include <unordered_map>
+#include <variant>
+#include <array>
+#include <list>
 
 namespace block_model {
+    class Object;
+
     struct String {
         String() = default;
+        String(const String&) = default;
         explicit String(std::string str) : str(std::move(str)) {};
         explicit String(int str) : str(std::to_string(str)) {};
         [[nodiscard]] bool is_empty() const {
             return str.empty();
-        }
-        void operator+(const String& src) {
-            this->str = this->str + src.str;
         };
+        String& operator+(const String& src) {
+            this->str = this->str + src.str;
+            return *this;
+        };
+        bool operator==(const String& src) {
+            return this->str == src.str;
+        }
         std::string str;
     };
+
+    const String object_template("%%%Object%%%: ");
 
     template <typename T>
     struct vector {
@@ -36,6 +48,23 @@ namespace block_model {
         void insert(const String& key, const String& value) {
             map.insert({key.str, value.str});
         };
+
+        void insert(const String& value) {
+            content.push_back(value);
+        }
+
+        void set_tag(const String& value) {
+            tag = value;
+        };
+
+        void set_end(bool value = true) {
+            end_tag = value;
+        };
+
+        String tag;
+        bool end_tag;
+
+        std::vector<String> content;
 
         std::unordered_multimap<std::string, std::string> map;
     };
@@ -55,12 +84,12 @@ namespace block_model {
         void SetHidden(const bool& value);
         void SetTitle(const String& new_title);
 
+        [[nodiscard]] int GetId() const;
+
         virtual ~Object();
 
     protected:
-        void CheckAttributes(String& result) const;
-        void WrapAttribute(String& result, const String& attribute, const String& value) const;
-        void WrapAttribute(String& result, const String& attribute, const int& value) const;
+        void CheckAttributes(Map& result) const;
 
         void CopyAttributes(const Object& src);
 
