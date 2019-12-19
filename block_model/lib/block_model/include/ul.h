@@ -12,9 +12,9 @@ namespace block_model {
         Ul& operator=(const Ul& src);
         ~Ul() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
-        void SetTagContent(const string &new_content) override;
+        void SetTagContent(const String &new_content) override;
     };
 }
 

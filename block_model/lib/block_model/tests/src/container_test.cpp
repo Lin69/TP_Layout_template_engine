@@ -30,7 +30,7 @@ TEST(Form, container) {
 TEST(Form, set_attributes) {
     Form form;
 
-    form.SetAction(block_model::string("action"));
+    form.SetAction(block_model::String("action"));
     form.SetHttpMethod(true);
 
     std::string exp_form("<form method=\"post\" action=\"action\" id=\"4\">\n</form>");

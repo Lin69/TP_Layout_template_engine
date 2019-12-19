@@ -12,13 +12,13 @@ namespace block_model {
         Select& operator=(const Select& src);
         ~Select() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
         void SetMultiple(const bool& value = true);
         void SetSize(const int& new_size);
         void SetRequired(const bool& value = true);
 
-        void SetTagContent(const string &new_content) override;
+        void SetTagContent(const String &new_content) override;
 
     private:
         bool multiple_attr;

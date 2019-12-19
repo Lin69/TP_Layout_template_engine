@@ -4,38 +4,21 @@ block_model::Select::Select() : multiple_attr(false), size_attr(0), required_att
 
 }
 
-block_model::Select::Select(const block_model::Select& src) {
-    tag_content.str = src.tag_content.str;
-    class_attr.vec = src.class_attr.vec;
-    hidden = src.hidden;
-    title.str = src.title.str;
+block_model::Select::Select(const block_model::Select& src) = default;
 
-    list_content.vec = src.list_content.vec;
-    multiple_attr = src.multiple_attr;
-    size_attr = src.size_attr;
-    required_attr = src.required_attr;
-}
-
-block_model::Select::Select(block_model::Select&& src) noexcept {
-    tag_content.str = std::move(src.tag_content.str);
-    class_attr.vec = std::move(src.class_attr.vec);
-    hidden = src.hidden;
-    title.str = std::move(src.title.str);
-
+block_model::Select::Select(block_model::Select&& src) noexcept : Object(std::move(src)),
+                                                                  multiple_attr(src.multiple_attr),
+                                                                  size_attr(src.size_attr),
+                                                                  required_attr(src.required_attr) {
     list_content.vec = std::move(src.list_content.vec);
-    multiple_attr = src.multiple_attr;
-    size_attr = src.size_attr;
-    required_attr = src.required_attr;
-
-    id_attr = ----id_count;
 }
 
 block_model::Select &block_model::Select::operator=(const block_model::Select& src) {
-    tag_content.str = src.tag_content.str;
-    class_attr.vec = src.class_attr.vec;
-    hidden = src.hidden;
-    title.str = src.title.str;
+    if (this == &src) {
+        return *this;
+    }
 
+    CopyAttributes(src);
     list_content.vec = src.list_content.vec;
     multiple_attr = src.multiple_attr;
     size_attr = src.size_attr;
@@ -58,36 +41,36 @@ void block_model::Select::SetRequired(const bool& value) {
     required_attr = value;
 }
 
-void block_model::Select::SetTagContent(const block_model::string &new_content) {
+void block_model::Select::SetTagContent(const block_model::String &new_content) {
 
 }
 
-block_model::string block_model::Select::MakeHtmlString() const {
-    block_model::string result("<select");
+block_model::String block_model::Select::MakeHtmlString() const {
+    block_model::String result("<select");
 
     if (multiple_attr) {
-        result + block_model::string(" multiple");
+        result + block_model::String(" multiple");
     }
 
     if (required_attr) {
-        result + block_model::string(" required");
+        result + block_model::String(" required");
     }
 
     if (size_attr) {
-        WrapAttribute(result, block_model::string("size"), size_attr);
+        WrapAttribute(result, block_model::String("size"), size_attr);
     }
 
     CheckAttributes(result);
 
-    result + block_model::string("\n");
+    result + block_model::String("\n");
 
     for (const auto& it : list_content.vec) {
-        result + block_model::string("\t<option>");
+        result + block_model::String("\t<option>");
         result + it;
-        result + block_model::string("</option>\n");
+        result + block_model::String("</option>\n");
     }
 
-    result + block_model::string("</select>");
+    result + block_model::String("</select>");
 
     return result;
 }

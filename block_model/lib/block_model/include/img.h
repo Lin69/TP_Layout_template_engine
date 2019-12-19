@@ -12,17 +12,17 @@ namespace block_model {
         Img& operator=(const Img& src);
         ~Img() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
-        void SetSrc(const string& new_src);
+        void SetSrc(const String& new_src);
         void SetWidth(const int& new_width);
         void SetHeight(const int& new_height);
-        void SetTagContent(const string &new_content) override;
+        void SetTagContent(const String &new_content) override;
 
     private:
-        int width_attr;
-        int height_attr;
-        string src_attr;
+        int width_attr{};
+        int height_attr{};
+        String src_attr;
     };
 }
 

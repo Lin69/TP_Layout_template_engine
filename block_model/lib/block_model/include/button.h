@@ -12,7 +12,7 @@ namespace block_model {
         Button& operator=(const Button& src);
         ~Button() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
     };
 }
 

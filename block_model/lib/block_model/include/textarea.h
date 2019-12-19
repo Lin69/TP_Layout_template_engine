@@ -12,12 +12,12 @@ namespace block_model {
         Textarea& operator=(const Textarea& src);
         ~Textarea() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
         void SetCols(const int& new_cols);
         void SetRows(const int& new_rows);
         void SetMaxlength(const int& new_maxlength);
-        void SetPlaceholder(const string& new_placeholder);
+        void SetPlaceholder(const String& new_placeholder);
         void SetReadonly(const bool& value = true);
         void SetRequired(const bool& value = true);
 
@@ -25,7 +25,7 @@ namespace block_model {
         int cols;
         int rows;
         int maxlength;
-        string placeholder;
+        String placeholder;
         bool readonly;
         bool required_attr;
     };

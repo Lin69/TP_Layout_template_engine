@@ -4,6 +4,8 @@
 #include "img.h"
 #include "gtest/gtest.h"
 
+#include <vector>
+
 TEST(A, init) {
     block_model::A a;
 
@@ -14,8 +16,8 @@ TEST(A, init) {
 
 TEST(A, set_link) {
     block_model::A a;
-    block_model::string href("path");
-    block_model::string content("link");
+    block_model::String href("path");
+    block_model::String content("link");
 
     a.SetHref(href);
     a.SetTagContent(content);
@@ -30,15 +32,16 @@ TEST(A, constructors) {
     std::string exp_a(R"(<a href="" id="14"></a>)");
     EXPECT_EQ(a.MakeHtmlString().str, exp_a);
 
-    block_model::string href("path");
+    block_model::String href("path");
     a.SetHref(href);
     block_model::A copy_link = a;
     std::string exp_copy(R"(<a href="path" id="15"></a>)");
     EXPECT_EQ(copy_link.MakeHtmlString().str, exp_copy);
 
-    auto move_link = block_model::A(block_model::A());
+    std::vector<block_model::A> vec;
+    vec.emplace_back(block_model::A());
     std::string exp_move(R"(<a href="" id="16"></a>)");
-    EXPECT_EQ(move_link.MakeHtmlString().str, exp_move);
+    EXPECT_EQ(vec[0].MakeHtmlString().str, exp_move);
 
     block_model::A assignment_link;
     assignment_link = a;
@@ -56,7 +59,7 @@ TEST(Img, init) {
 
 TEST(Img, set_attributes) {
     block_model::Img img;
-    block_model::string src("path");
+    block_model::String src("path");
     int width = 50;
     int height = 100;
 
@@ -76,10 +79,10 @@ TEST(Img, set_attributes) {
 TEST(Any_object, global_attributes) {
     block_model::Div div;
 
-    div.SetClass(block_model::string("class"));
+    div.SetClass(block_model::String("class"));
     div.SetHidden(true);
-    div.SetTagContent(block_model::string("content"));
-    div.SetTitle(block_model::string("title"));
+    div.SetTagContent(block_model::String("content"));
+    div.SetTitle(block_model::String("title"));
 
     std::string exp_div("<div id=\"20\" class=\"class\" hidden title=\"title\">content\n</div>");
     EXPECT_EQ(div.MakeHtmlString().str, exp_div);

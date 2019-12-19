@@ -12,12 +12,12 @@ namespace block_model {
             A& operator=(const A& src);
             ~A() override;
 
-            [[nodiscard]] string MakeHtmlString() const override;
+            [[nodiscard]] Map MakeHtmlString() const override;
 
-            void SetHref(const string& new_href);
+            void SetHref(const String& new_href);
 
         private:
-            string href;
+            String href;
     };
 }
 

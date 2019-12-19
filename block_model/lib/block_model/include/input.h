@@ -14,14 +14,14 @@ namespace block_model {
         Input& operator=(const Input& src);
         ~Input() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
         void SetType(const object_type& type);
-        void SetValue(const string& new_value);
+        void SetValue(const String& new_value);
 
     private:
         object_type type_attr;
-        string value_attr;
+        String value_attr;
     };
 }
 

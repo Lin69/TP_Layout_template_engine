@@ -24,7 +24,7 @@ TEST(Input, set_attributes) {
     object_type test_type = image;
 
     input.SetType(test_type);
-    input.SetValue(block_model::string("string"));
+    input.SetValue(block_model::String("string"));
 
     std::string exp_input(R"(<input type="image" value="string" id="2">)");
     EXPECT_EQ(input.MakeHtmlString().str, exp_input);
@@ -42,7 +42,7 @@ TEST(Textarea, set_attributes) {
     textarea.SetCols(10);
     textarea.SetRows(20);
     textarea.SetMaxlength(50);
-    textarea.SetPlaceholder(block_model::string("text"));
+    textarea.SetPlaceholder(block_model::String("text"));
     textarea.SetReadonly(true);
     textarea.SetRequired(true);
 

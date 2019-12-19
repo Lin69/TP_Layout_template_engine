@@ -6,14 +6,14 @@
 namespace block_model {
     class List {
     public:
-        void SetList(const vector<string>& new_list);
-        void ListAppend(const string& item);
+        void SetList(const vector<String>& new_list);
+        void ListAppend(const String& item);
         void ListRemove(const int& id);
 
         virtual ~List();
 
     protected:
-        vector<string> list_content;
+        vector<String> list_content;
     };
 }
 

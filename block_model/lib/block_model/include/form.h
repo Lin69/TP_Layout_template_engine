@@ -11,18 +11,18 @@ namespace block_model {
         Form& operator=(const Form& src);
         ~Form() override;
 
-        [[nodiscard]] string MakeHtmlString() const override;
+        [[nodiscard]] String MakeHtmlString() const override;
 
-        void SetAction(const string& new_action);
+        void SetAction(const String& new_action);
         void SetHttpMethod(const bool& value = true);
 
-        int GetId() const;
+        [[nodiscard]] int GetId() const;
 
-        void SetTagContent(const string& new_content) override;
+        void SetTagContent(const String& new_content) override;
 
     private:
-        string action_attr;
-        bool http_method;
+        String action_attr;
+        bool http_method{};
     };
 }
 
