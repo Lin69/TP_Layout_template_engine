@@ -8,7 +8,6 @@ set_target_properties(${PROJECT_NAME}_lib PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF)
-#        COMPILE_FLAGS "-Wall -Wextra -Werror -Wpedantic")
 target_include_directories(${PROJECT_NAME}_lib PUBLIC include)
 
 add_subdirectory(tests)

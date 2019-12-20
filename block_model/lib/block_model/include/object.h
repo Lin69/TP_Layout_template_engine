@@ -1,13 +1,13 @@
 #ifndef TP_LAYOUT_TEMPLATE_ENGINE_OBJECT_H
 #define TP_LAYOUT_TEMPLATE_ENGINE_OBJECT_H
 
-#include <string>
-#include <vector>
-#include <memory>
-#include <unordered_map>
-#include <variant>
 #include <array>
 #include <list>
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <variant>
+#include <vector>
 
 namespace block_model {
     class Object;
@@ -33,9 +33,9 @@ namespace block_model {
     const String object_template("%%%Object%%%: ");
 
     template <typename T>
-    struct vector {
-        vector() = default;
-        explicit vector(std::vector<T> vec) : vec(std::move(vec)) {};
+    struct Vector {
+        Vector() = default;
+        explicit Vector(std::vector<T> vec) : vec(std::move(vec)) {};
         [[nodiscard]] bool is_empty() const {
             return vec.empty();
         };
@@ -62,7 +62,7 @@ namespace block_model {
         };
 
         String tag;
-        bool end_tag;
+        bool end_tag = true;
 
         std::vector<String> content;
 
@@ -80,8 +80,8 @@ namespace block_model {
 
         virtual void SetTagContent(const String &new_content);
         void SetClass(const String& new_class);
-        void SetClass(const vector<String>& new_class);
-        void SetHidden(const bool& value);
+        void SetClass(const Vector<String>& new_class);
+        void SetHidden(bool value);
         void SetTitle(const String& new_title);
 
         [[nodiscard]] int GetId() const;
@@ -97,7 +97,7 @@ namespace block_model {
         int id_attr{}; // При этом при уничтожении объекта последующие id не уменьшаются
 
         String tag_content;
-        vector<String> class_attr;
+        Vector<String> class_attr;
         bool hidden;
         String title;
     };

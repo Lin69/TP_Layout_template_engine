@@ -4,11 +4,12 @@
 #include "object.h"
 
 namespace block_model {
-    class Creator {
-    public:
-        virtual std::shared_ptr<Object> Create() = 0;
-        virtual ~Creator() = default;
-    };
+    template <typename T>
+    static std::pair<std::shared_ptr<Object>, std::shared_ptr<T>> Create() {
+        auto ptr = std::make_shared<T>();
+        std::shared_ptr<Object> obj = ptr;
+        return std::make_pair(obj, ptr);
+    }
 }
 
 #endif //TP_LAYOUT_TEMPLATE_ENGINE_CREATOR_H

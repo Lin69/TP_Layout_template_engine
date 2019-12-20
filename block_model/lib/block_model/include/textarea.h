@@ -18,8 +18,8 @@ namespace block_model {
         void SetRows(const int& new_rows);
         void SetMaxlength(const int& new_maxlength);
         void SetPlaceholder(const String& new_placeholder);
-        void SetReadonly(const bool& value = true);
-        void SetRequired(const bool& value = true);
+        void SetReadonly(bool value = true);
+        void SetRequired(bool value = true);
 
     private:
         int cols;

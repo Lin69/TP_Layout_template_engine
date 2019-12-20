@@ -16,7 +16,7 @@ TEST(Ol, set_list) {
     Ol ol;
 
     std::vector<String> list = {block_model::String("test1"), block_model::String("test2"), block_model::String("test3")};
-    vector<String> list_wrap(list);
+    Vector<String> list_wrap(list);
 
     ol.SetList(list_wrap);
 
@@ -44,7 +44,7 @@ TEST(Ul, set_list) {
     Ul ul{};
 
     std::vector<String> list = {block_model::String("test1"), block_model::String("test2"), block_model::String("test3")};
-    vector<String> list_wrap(list);
+    Vector<String> list_wrap(list);
 
     ul.SetList(list_wrap);
 
@@ -72,7 +72,7 @@ TEST(Select, set_list) {
     Select select{};
 
     std::vector<String> list = {block_model::String("test1"), block_model::String("test2"), block_model::String("test3")};
-    vector<String> list_wrap(list);
+    Vector<String> list_wrap(list);
 
     select.SetList(list_wrap);
 

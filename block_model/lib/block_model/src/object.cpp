@@ -11,10 +11,10 @@ block_model::Object::Object(const block_model::Object& src) : id_attr(id_count++
 }
 
 block_model::Object::Object(block_model::Object&& src) noexcept : id_attr(src.id_attr),
-                                                                  tag_content(std::move(src.tag_content)),
+                                                                  tag_content(src.tag_content),
                                                                   class_attr(std::move(src.class_attr)),
                                                                   hidden(src.hidden),
-                                                                  title(std::move(src.title)) {
+                                                                  title(src.title) {
 
 }
 
@@ -29,11 +29,11 @@ void block_model::Object::SetClass(const block_model::String& new_class) {
     class_attr.vec.push_back(new_class);
 }
 
-void block_model::Object::SetClass(const block_model::vector<block_model::String>& new_class) {
+void block_model::Object::SetClass(const block_model::Vector<block_model::String>& new_class) {
     class_attr.vec = new_class.vec;
 }
 
-void block_model::Object::SetHidden(const bool& value = true) {
+void block_model::Object::SetHidden(bool value = true) {
     hidden = value;
 }
 

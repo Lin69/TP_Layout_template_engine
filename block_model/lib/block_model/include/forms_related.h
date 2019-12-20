@@ -7,7 +7,7 @@
 namespace block_model {
     class FormsRelated {
     public:
-        void SetFormPtr(std::shared_ptr<Form> new_form_ptr);
+        void SetFormPtr(const std::shared_ptr<Form>& new_form_ptr);
 
         virtual ~FormsRelated();
 

@@ -13,7 +13,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF)
-#        COMPILE_FLAGS "-Wall -Wextra -Werror -Wpedantic")
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} ${NAME_OF_THE_TESTED_PROJECT}_lib gtest)
 

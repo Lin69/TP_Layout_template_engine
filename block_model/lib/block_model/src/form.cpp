@@ -30,7 +30,7 @@ void block_model::Form::SetAction(const block_model::String& new_action) {
     action_attr.str = new_action.str;
 }
 
-void block_model::Form::SetHttpMethod(const bool& value) {
+void block_model::Form::SetHttpMethod(bool value) {
     http_method = value;
 }
 

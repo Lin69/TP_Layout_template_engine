@@ -29,7 +29,7 @@ block_model::Select &block_model::Select::operator=(const block_model::Select& s
 
 block_model::Select::~Select() = default;
 
-void block_model::Select::SetMultiple(const bool& value) {
+void block_model::Select::SetMultiple(bool value) {
     multiple_attr = value;
 }
 
@@ -37,7 +37,7 @@ void block_model::Select::SetSize(const int& new_size) {
     size_attr = new_size;
 }
 
-void block_model::Select::SetRequired(const bool& value) {
+void block_model::Select::SetRequired(bool value) {
     required_attr = value;
 }
 

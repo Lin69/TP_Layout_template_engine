@@ -1,18 +1,13 @@
-#include "a.h"
-#include "a_creator.h"
-#include "div.h"
-#include "img.h"
+#include "block_model.h"
 #include "gtest/gtest.h"
+#include "creator.h"
 
-#include <vector>
-#include <array>
 
 using namespace block_model;
 
 TEST(A, init) {
-    A a;
-
-    auto a_map = a.MakeHtmlString();
+    auto a_pair = Create<A>();
+    auto a_map = a_pair.first->MakeHtmlString();
 
     Map a_map_exp;
     a_map_exp.insert(String("id"), String(0));
@@ -21,15 +16,19 @@ TEST(A, init) {
     a_map_exp.set_end();
     a_map_exp.insert(String(""));
 
-    for (const auto& it : a_map.map) {
-        EXPECT_EQ(it.first, a_map_exp.map.find(it.first)->first);
-        EXPECT_EQ(it.second, a_map_exp.map.find(it.first)->second);
+    for (const auto& it : a_map_exp.map) {
+        EXPECT_EQ(it.first, a_map.map.find(it.first)->first);
+        EXPECT_EQ(it.second, a_map.map.find(it.first)->second);
     }
 
     EXPECT_EQ(a_map.tag.str, "a");
     EXPECT_EQ(a_map.end_tag, true);
 
     EXPECT_EQ(a_map.content[0].str, "");
+
+    a_pair.second->SetHref(String("poker"));
+    a_pair.first->SetHidden(true);
+    a_pair.second->SetTitle(String("lol"));
 }
 
 /*TEST(A, set_link) {

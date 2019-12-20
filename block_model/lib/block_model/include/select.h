@@ -14,9 +14,9 @@ namespace block_model {
 
         [[nodiscard]] Map MakeHtmlString() const override;
 
-        void SetMultiple(const bool& value = true);
+        void SetMultiple(bool value = true);
         void SetSize(const int& new_size);
-        void SetRequired(const bool& value = true);
+        void SetRequired(bool value = true);
 
         void SetTagContent(const String &new_content) override;
 

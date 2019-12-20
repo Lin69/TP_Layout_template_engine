@@ -47,11 +47,11 @@ void block_model::Textarea::SetPlaceholder(const block_model::String& new_placeh
     placeholder.str = new_placeholder.str;
 }
 
-void block_model::Textarea::SetReadonly(const bool& value) {
+void block_model::Textarea::SetReadonly(bool value) {
     readonly = value;
 }
 
-void block_model::Textarea::SetRequired(const bool& value) {
+void block_model::Textarea::SetRequired(bool value) {
     required_attr = value;
 }
 

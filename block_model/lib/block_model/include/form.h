@@ -14,7 +14,7 @@ namespace block_model {
         [[nodiscard]] Map MakeHtmlString() const override;
 
         void SetAction(const String& new_action);
-        void SetHttpMethod(const bool& value = true);
+        void SetHttpMethod(bool value = true);
 
         void SetTagContent(const String& new_content) override;
 
