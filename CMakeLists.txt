@@ -7,4 +7,5 @@ add_subdirectory(external)
 
 add_subdirectory(block_model)
 add_subdirectory(html_generator)
+add_subdirectory(presenter)
 add_subdirectory(layout_template_engine)
