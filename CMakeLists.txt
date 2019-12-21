@@ -5,4 +5,6 @@ enable_testing()
 
 add_subdirectory(external)
 
-add_subdirectory(HTML_generator)
+add_subdirectory(block_model)
+add_subdirectory(html_generator)
+add_subdirectory(layout_template_engine)
