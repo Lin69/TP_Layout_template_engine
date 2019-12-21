@@ -5,7 +5,12 @@ void block_model::Container::AddObject(const std::shared_ptr<Object>& object) {
 }
 
 void block_model::Container::RemoveObject(const int& id) {
-    objects_content[id] = nullptr;
+    for (const auto& it : objects_content) {
+        if (it->GetId() == id) {
+            objects_content.remove(it);
+            break;
+        }
+    }
 }
 
 block_model::Container::~Container() = default;

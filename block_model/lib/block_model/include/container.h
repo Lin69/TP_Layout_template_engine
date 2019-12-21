@@ -13,7 +13,7 @@ namespace block_model {
         virtual ~Container();
 
     protected:
-        std::vector<std::shared_ptr<Object>> objects_content;
+        std::list<std::shared_ptr<Object>> objects_content;
     };
 }
 

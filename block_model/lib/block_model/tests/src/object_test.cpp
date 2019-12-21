@@ -2,7 +2,6 @@
 #include "gtest/gtest.h"
 #include "creator.h"
 
-
 using namespace block_model;
 
 TEST(A, init) {
@@ -10,7 +9,6 @@ TEST(A, init) {
     auto a_map = a_pair.first->MakeHtmlString();
 
     Map a_map_exp;
-    a_map_exp.insert(String("id"), String(0));
     a_map_exp.insert(String("href"), String(""));
     a_map_exp.set_tag(String("a"));
     a_map_exp.set_end();
@@ -25,10 +23,6 @@ TEST(A, init) {
     EXPECT_EQ(a_map.end_tag, true);
 
     EXPECT_EQ(a_map.content[0].str, "");
-
-    a_pair.second->SetHref(String("poker"));
-    a_pair.first->SetHidden(true);
-    a_pair.second->SetTitle(String("lol"));
 }
 
 /*TEST(A, set_link) {
